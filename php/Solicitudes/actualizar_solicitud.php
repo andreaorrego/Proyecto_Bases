@@ -1,0 +1,22 @@
+<?php
+include("proteger_admin.php");
+include("conexion.php");
+
+$id = $_POST['id_solicitud'];
+$estado = $_POST['estado'];
+$fecha_retorno = $_POST['fecha_retorno'];
+$responsable = $_POST['responsable'];
+
+$sql = "
+UPDATE SOLICITUD_CLIENTE SET
+estado='$estado',
+fecha_retorno='$fecha_retorno',
+responsable='$responsable'
+WHERE id_solicitud=$id
+";
+
+mysqli_query($conexion, $sql);
+
+header("Location: listar_solicitudes.php");
+exit();
+?>

@@ -85,3 +85,13 @@ CREATE TABLE SOLICITUD_COMPRA (
     FOREIGN KEY (id_admin) 
         REFERENCES ADMINISTRADOR(id_usuario)
 );
+
+CREATE TABLE HISTORIAL_EQUIPO (
+    id_historial INT AUTO_INCREMENT PRIMARY KEY,
+    id_equipo INT,
+    evento VARCHAR(50),
+    descripcion VARCHAR(255),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_equipo) 
+        REFERENCES EQUIPO(id_equipo)
+);
