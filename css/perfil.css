@@ -1,0 +1,46 @@
+.perfil-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 60px;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: 60px auto;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.columna-perfil,
+.columna-resumen {
+    flex: 1;
+}
+
+.acciones {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 8px 15px;
+    background: linear-gradient(90deg, #ec6f76, #795ce4);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin-top: 10px;
+}
+
+.grupo-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    width: 100%;            
+    margin: 0 auto;         
+}

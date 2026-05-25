@@ -2,12 +2,20 @@
 include("proteger_admin.php");
 include("conexion.php");
 
-$id = $_GET['id'];
+$id_cliente = $_GET['id'];
 
-$sql = "DELETE FROM CLIENTE WHERE id_usuario=$id";
+$sql = "SELECT * FROM SOLICITUD_CLIENTE WHERE id_cliente=$id";
+$res = mysqli_query($conexion, $sql);
 
-$conexion->query($sql);
+if (mysqli_num_rows($res) > 0) {
 
-header("Location: listar_clientes.php");
-exit();
+    echo "No se puede eliminar: el cliente tiene solicitudes registradas";
+
+} else {
+
+    $sqlDelete = "DELETE FROM CLIENTE WHERE id_usuario=$id";
+    mysqli_query($conexion, $sqlDelete);
+
+    echo "Cliente eliminado correctamente";
+}
 ?>

@@ -1,23 +1,31 @@
 <?php
-include("proteger_admin.php");
-include("conexion.php");
+require_once __DIR__ . '/../conexion.php';
+require_once __DIR__ . '/../Sistema/proteger_admin.php';
 
-$id = $_GET['id'];
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    header("Location: /Proyecto_Bases/php/Equipo/listar_equipo.php");
+    exit();
+}
 
-$sql = "
-UPDATE SOLICITUD_CLIENTE SET
-estado='Devuelta',
-fecha_retorno=CURDATE()
-WHERE id_solicitud=$id
-";
+$id_solicitud = mysqli_real_escape_string($conexion, $_GET['id']);
 
-mysqli_query($conexion,"
-INSERT INTO HISTORIAL_EQUIPO (id_equipo, evento, descripcion)
-VALUES ($id, 'Devolución', 'Equipo devuelto al inventario')
-");
+$query = "SELECT id_equipo FROM SOLICITUD_CLIENTE WHERE id_solicitud = $id_solicitud";
+$resultado = mysqli_query($conexion, $query);
+$datos = mysqli_fetch_assoc($resultado);
 
-//mysqli_query($conexion, $sql);
+if ($datos) {
+    $id_equipo = $datos['id_equipo'];
 
-header("Location: listar_solicitudes.php");
+    $sql_update = "UPDATE SOLICITUD_CLIENTE SET 
+                   estado='Devuelta', 
+                   fecha_retorno=CURDATE() 
+                   WHERE id_solicitud=$id_solicitud";
+    mysqli_query($conexion, $sql_update);
+
+    mysqli_query($conexion, "INSERT INTO HISTORIAL_EQUIPO (id_equipo, evento, descripcion) 
+                             VALUES ($id_equipo, 'Devolución', 'Equipo devuelto al inventario')");
+}
+
+header("Location: /Proyecto_Bases/php/Equipo/listar_equipo.php");
 exit();
 ?>

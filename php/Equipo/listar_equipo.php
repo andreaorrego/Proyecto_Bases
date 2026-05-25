@@ -1,58 +1,41 @@
 <?php
-include("proteger_admin.php");
-include("conexion.php");
+require_once __DIR__ . '/../conexion.php';
+require_once __DIR__ . '/../Sistema/proteger_admin.php';
 
-$sql = "
-SELECT e.*, p.nombre AS proveedor
-FROM EQUIPO e
-INNER JOIN PROVEEDOR p ON e.id_proveedor = p.id_proveedor
-WHERE 1=1
-";
+$sql = "SELECT e.*, p.nombre AS proveedor
+        FROM EQUIPO e
+        INNER JOIN PROVEEDOR p ON e.id_proveedor = p.id_proveedor
+        WHERE 1=1";
 
 if (!empty($_GET['tipo'])) {
-    $tipo = $_GET['tipo'];
+    $tipo = mysqli_real_escape_string($conexion, $_GET['tipo']);
     $sql .= " AND e.tipo_equipo LIKE '%$tipo%'";
 }
-
 if (!empty($_GET['estado'])) {
-    $estado = $_GET['estado'];
+    $estado = mysqli_real_escape_string($conexion, $_GET['estado']);
     $sql .= " AND e.estado = '$estado'";
-}
-
-if (!empty($_GET['proveedor'])) {
-    $proveedor = $_GET['proveedor'];
-    $sql .= " AND p.nombre LIKE '%$proveedor%'";
 }
 
 $resultado = mysqli_query($conexion, $sql);
 
-echo "<table border='1'>
-<tr>
-    <th>ID</th>
-    <th>Serie</th>
-    <th>Marca</th>
-    <th>Modelo</th>
-    <th>Tipo</th>
-    <th>Estado</th>
-    <th>Proveedor</th>
-    <th>Opciones</th>
-</tr>";
-
+$filas_html = "";
 while($fila = mysqli_fetch_assoc($resultado)) {
-    echo "<tr>
+    $filas_html .= "<tr>
         <td>{$fila['id_equipo']}</td>
-        <td>{$fila['serial']}</td>
+        <td>{$fila['serie']}</td>
         <td>{$fila['marca']}</td>
         <td>{$fila['modelo']}</td>
         <td>{$fila['tipo_equipo']}</td>
         <td>{$fila['estado']}</td>
         <td>{$fila['proveedor']}</td>
         <td>
-            <a href='editar_equipo.php?id={$fila['id_equipo']}'>Editar</a>
-            <a href='dar_baja_equipo.php?id={$fila['id_equipo']}'>Dar de baja</a>
+            <a href='editar_equipo.php?id={$fila['id_equipo']}' class='btn-opcion'>Editar</a>
+            <a href='dar_baja_equipo.php?id={$fila['id_equipo']}' class='btn-opcion'>Dar de baja</a>
+            <a href='devolver_equipo.php?id={$fila['id_equipo']}' class='btn-opcion'>Devolver</a>
         </td>
     </tr>";
 }
 
-echo "</table>";
+$plantilla = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto_Bases/html/Equipo/listar_equipos.html');
+echo str_replace('{{FILAS_EQUIPOS}}', $filas_html, $plantilla);
 ?>

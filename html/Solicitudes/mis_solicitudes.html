@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis solicitudes</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+</head>
+
+<body>
+    <div class="solicitud">
+        <h2>Mis solicitudes</h2>
+
+        <table class="tabla-solicitudes">
+            <thead>
+                <tr>
+                    <th>Equipo</th>
+                    <th>Observación</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{FILAS_SOLICITUDES}}
+            </tbody>
+        </table>
+
+        <a href="/Proyecto_Bases/html/Usuario/menu_cliente.html">
+            <button type="submit">Volver al menú</button>
+        </a>
+
+    </div>
+</body>
+</html>

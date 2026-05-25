@@ -1,0 +1,34 @@
+.login-panel h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.login-panel input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #262626; 
+    border: 2px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.select {
+    width: 100%;          
+    padding: 10px;        
+    margin: 8px 0;        
+    border: 1px solid #ccc;
+    border-radius: 6px;   
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;      
+    appearance: none;     
+}

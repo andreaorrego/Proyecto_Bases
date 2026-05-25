@@ -1,5 +1,5 @@
--- Active: 1778449660132@@127.0.0.1@3307
 CREATE DATABASE inventario_universidad;
+
 USE inventario_universidad;
 
 CREATE TABLE USUARIO (
@@ -95,3 +95,13 @@ CREATE TABLE HISTORIAL_EQUIPO (
     FOREIGN KEY (id_equipo) 
         REFERENCES EQUIPO(id_equipo)
 );
+
+INSERT INTO USUARIO (nombre, apellido, correo, contrasena, estado)
+VALUES ('Admin','Root','admin@ejemplo.local','$2y$10$ZIIqCdJeJA5AGNnR7NvSI.Gpbpr7vk1dxTc3uuJpxULHM102OMko6','Activo');
+
+SELECT id_usuario FROM USUARIO WHERE correo='admin@ejemplo.local';
+-- Anota el id resultante (por ejemplo 1)
+INSERT INTO ADMINISTRADOR (id_usuario) VALUES (11);
+
+SELECT id_usuario, correo
+FROM USUARIO;

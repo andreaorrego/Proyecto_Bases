@@ -1,22 +1,21 @@
 <?php
-include("proteger_admin.php");
+session_start();
 include("conexion.php");
 
-$id = $_POST['id_usuario'];
-$cedula = $_POST['cedula'];
-$cargo = $_POST['cargo'];
-$dependencia = $_POST['dependencia'];
-
-$sql = "
-UPDATE CLIENTE 
-SET cedula='$cedula',
-    cargo='$cargo',
-    dependencia='$dependencia'
-WHERE id_usuario=$id";
-
-$conexion->query($sql);
-
-header("Location: listar_clientes.php");
-exit();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = intval($_POST['id_usuario']);
+    $cargo = $_POST['cargo'];
+    $dependencia = $_POST['dependencia'];
+    
+    $sql = "UPDATE CLIENTE SET cargo = ?, dependencia = ? WHERE id_usuario = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("ssi", $cargo, $dependencia, $id);
+    
+    if ($stmt->execute()) {
+        header("Location: listar_clientes.php?exito=1");
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+}
 ?>
-

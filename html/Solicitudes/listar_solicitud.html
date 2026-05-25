@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+</head>
+
+<body>
+    <div class="login-panel">
+        <h1>Solicitudes</h1>
+
+        <table class="tabla-solicitudes">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Equipo</th>
+                    <th>Observación</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{FILAS_SOLICITUDES}}
+            </tbody>
+        </table>
+        <a href="/Proyecto_Bases/html/Usuario/menu_admin.html">
+            <button type="submit">Volver al menú</button>
+        </a>
+    </div>
+</body>
+
+</html>

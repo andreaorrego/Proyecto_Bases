@@ -1,35 +1,27 @@
 <?php
-include("proteger_admin.php");
+session_start();
 include("conexion.php");
 
-session_start();
-
 if (!isset($_SESSION['correo'])) {
-    header("Location: login.html");
+    header("Location: /Proyecto_Bases/html/Usuario/login.html");
     exit();
 }
 
-include "conexion.php";
-
 $id = intval($_GET['id']);
-
-$sql = "SELECT * FROM CLIENTE WHERE id_usuario=$id";
+$sql = "SELECT * FROM CLIENTE WHERE id_usuario = $id";
 $resultado = $conexion->query($sql);
 $cliente = $resultado->fetch_assoc();
 
 if (!$cliente) {
     die("Cliente no encontrado");
 }
+
+$plantilla = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto_Bases/html/Cliente/editar_perfil.html');
+
+$plantilla = str_replace('{{ID_USUARIO}}', $cliente['id_usuario'], $plantilla);
+$plantilla = str_replace('{{CEDULA}}', $cliente['cedula'], $plantilla);
+$plantilla = str_replace('{{CARGO}}', $cliente['cargo'], $plantilla);
+$plantilla = str_replace('{{DEPENDENCIA}}', $cliente['dependencia'], $plantilla);
+
+echo $plantilla;
 ?>
-
-<form action="actualizar_cliente.php" method="POST">
-
-    <input type="hidden" name="id_usuario" value="<?= $cliente['id_usuario'] ?>">
-
-    <input type="number" name="cedula" value="<?= $cliente['cedula'] ?>" required>
-    <input type="text" name="cargo" value="<?= $cliente['cargo'] ?>" required>
-    <input type="text" name="dependencia" value="<?= $cliente['dependencia'] ?>" required>
-
-    <button type="submit">Actualizar</button>
-
-</form>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Cliente</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/perfil.css">
+</head>
+
+<body>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+    <div class="perfil-container">
+
+        <div class="columna-perfil">
+            <h2>PERFIL</h2>
+            <p><strong>Nombre:</strong> {{NOMBRE}}</p>
+            <p><strong>Apellido:</strong> {{APELLIDO}}</p>
+            <p><strong>Correo:</strong> {{CORREO}}</p>
+            <p><strong>Cargo:</strong> {{CARGO}}</p>
+            <p><strong>Dependencia:</strong> {{DEPENDENCIA}}</p>
+            <p><strong>Estado:</strong> {{ESTADO}}</p>
+        </div>
+
+        <div class="columna-resumen">
+            <h2>RESUMEN DE SOLICITUDES</h2>
+            <p>Pendientes: {{PENDIENTES}}</p>
+            <p>Aprobadas: {{APROBADAS}}</p>
+            <p>Rechazadas: {{RECHAZADAS}}</p>
+
+            <div class="acciones">
+                <a href="/Proyecto_Bases/html/Solicitudes/mis_solicitudes.html">
+                    <button type="button">Ver todas las solicitudes</button>
+                </a>
+                <a href="/Proyecto_Bases/html/Cliente/editar_perfil.html">
+                    <button type="button">Editar el perfil</button>
+                </a>
+                <a href="/Proyecto_Bases/html/Usuario/menu_cliente.html">
+                    <button type="button">Volver al menú</button>
+                </a>
+                <a href="/Proyecto_Bases/php/Usuario/logout.php">
+                    <button type="button">Cerrar sesión</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

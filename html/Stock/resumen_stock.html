@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Cliente</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/registrar_usuario.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+</head>
+
+<body>
+    <div class="login-panel">
+        <h1>Resumen de Stock</h1>
+        <div class="tabla-solicitudes">
+            <table border="1">
+                <tr>
+                    <th>Disponibles</th>
+                    <th>Transferidos</th>
+                    <th>Dados de baja</th>
+                </tr>
+                <tr>
+                    <td>{{DISPONIBLES}}</td>
+                    <td>{{TRANSFERIDOS}}</td>
+                    <td>{{BAJA}}</td>
+                </tr>
+            </table>
+            <a href="/Proyecto_Bases/html/Usuario/menu_admin.html">
+                <button type="submit">Volver al menú</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

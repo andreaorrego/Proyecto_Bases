@@ -2,14 +2,21 @@
 include("proteger_admin.php");
 include("conexion.php");
 
-$id = $_GET['id'];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    
+    $id = mysqli_real_escape_string($conexion, $_GET['id']);
 
-mysqli_query($conexion,"
-UPDATE SOLICITUD_COMPRA
-SET estado='Recibida'
-WHERE id_compra=$id
-");
+    $sql = "UPDATE SOLICITUD_COMPRA SET estado = 'Recibida' WHERE id_compra = $id";
+    
+    if (mysqli_query($conexion, $sql)) {
+        header("Location: listar_compra.php?mensaje=actualizado");
+    } else {
+        echo "Error al actualizar: " . mysqli_error($conexion);
+        exit();
+    }
 
-header("Location: listar_compra.php");
+} else {
+    header("Location: listar_compra.php");
+}
 exit();
 ?>

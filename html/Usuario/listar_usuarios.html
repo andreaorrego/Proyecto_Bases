@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/container.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Usuarios Registrados</h1>
+        <div class="tabla-solicitudes">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Dependencia</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{FILAS_USUARIOS}}
+                </tbody>
+            </table>
+            <div class="botton">
+                <a href="/Proyecto_Bases/php/Sistema/menu_admin.php">
+                    <button type="submit">Volver al menú</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

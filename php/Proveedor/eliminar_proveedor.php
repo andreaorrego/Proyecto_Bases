@@ -2,14 +2,15 @@
 include("proteger_admin.php");
 include("conexion.php");
 
-$id = $_GET['id'];
+$id_proveedor = $_GET['id'];
 
-$sql = "DELETE FROM PROVEEDOR WHERE id_proveedor=$id";
+$sql = "SELECT * FROM EQUIPO WHERE id_proveedor=$id_proveedor";
+$res = mysqli_query($conexion, $sql);
 
-if(mysqli_query($conexion, $sql)){
-    header("Location: listar_proveedores.php");
-    exit();
+if (mysqli_num_rows($res) > 0) {
+    echo "No se puede eliminar: hay equipos asociados";
 } else {
-    echo mysqli_error($conexion);
+    mysqli_query($conexion, "DELETE FROM PROVEEDOR WHERE id_proveedor=$id_proveedor");
+    echo "Proveedor eliminado correctamente";
 }
 ?>

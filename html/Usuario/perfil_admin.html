@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Administrador</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/perfil.css">
+</head>
+
+<body>
+    <div class="perfil-container">
+        <div class="columna-perfil">
+            <h1>Perfil del Administrador</h1>
+            <h2>Bienvenido, {{NOMBRE_ADMIN}}</h2>
+            <p><strong>Correo:</strong> {{CORREO_ADMIN}}</p>
+        </div>
+
+        <div class="columna-resumen">
+            <h3>Gestión rápida</h3>
+            <div class="grupo-botones">
+                <a href="/Proyecto_Bases/php/Usuario/listar_usuario.php">
+                    <button type="button">Gestionar Usuarios</button>
+                </a>
+                <a href="/Proyecto_Bases/php/Proveedor/listar_proveedores.php">
+                    <button type="button">Gestionar Proveedores</button>
+                </a>
+                <a href="/Proyecto_Bases/php/Proveedor/listar_equipos.php">
+                    <button type="button">Gestionar Equipos</button>
+                </a>
+                <a href="/Proyecto_Bases/php/Solicitudes/solicitudes_compra.php">
+                    <button type="button">Ver Solicitudes</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="columna-resumen">
+            <div class="grupo-botones">
+                <a href="/Proyecto_Bases/html/Usuario/menu_admin.html">
+                    <button type="button">Volver al menú</button>
+                </a>
+                <a href="/Proyecto_Bases/php/Usuario/logout.php">
+                    <button type="button">Cerrar sesión</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

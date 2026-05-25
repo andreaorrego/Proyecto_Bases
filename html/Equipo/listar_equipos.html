@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Equipos</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+</head>
+
+<body>
+    <div class="login-panel">
+        <h1>Gestión de Equipos</h1>
+        <div class="tabla-solicitudes">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Serie</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Proveedor</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{FILAS_EQUIPOS}}
+                </tbody>
+
+            </table>
+        </div>
+        <a href="/Proyecto_Bases/php/Usuario/menu_admin.php">
+            <button type="submit">Volver al menú</button>
+        </a>
+    </div>
+</body>
+
+</html>

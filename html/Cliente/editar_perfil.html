@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Cliente</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/registrar_usuario.css">
+</head>
+
+<body>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+    <div class="login-panel">
+
+        <div class="columna-perfil">
+            <h2>INFORMACION ACTUAL</h2>
+            <p><strong>Nombre:</strong> {{NOMBRE}}</p>
+            <p><strong>Apellido:</strong> {{APELLIDO}}</p>
+            <p><strong>Correo:</strong> {{CORREO}}</p>
+            <p><strong>Cargo:</strong> {{CARGO}}</p>
+            <p><strong>Dependencia:</strong> {{DEPENDENCIA}}</p>
+            <p><strong>Estado:</strong> {{ESTADO}}</p>
+        </div>
+
+        <form action="/Proyecto_Bases/php/Cliente/actualizar_cliente.php" method="POST">
+
+            <input type="hidden" name="id_usuario" value="{{ID_USUARIO}}">
+
+            <label>Correo:</label>
+            <input type="text" name="correo" value="{{CORREO}}">
+
+            <label>Cargo:</label>
+            <input type="text" name="cargo" value="{{CARGO}}">
+
+            <label>Dependencia:</label>
+            <input type="text" name="dependencia" value="{{DEPENDENCIA}}">
+        </form>
+
+        <a href="/Proyecto_Bases/html/Usuario/perfil_cliente.html">
+            <button type="submit">Actualizar</button>
+        </a>
+
+    </div>
+</body>
+</html>

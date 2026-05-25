@@ -1,25 +1,43 @@
 <?php
-include("proteger_admin.php");
-include("conexion.php");
+include("../conexion.php");
 
-$id_usuario = $_POST['id_usuario'];
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$correo = $_POST['correo'];
+$contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
+
 $cedula = $_POST['cedula'];
 $cargo = $_POST['cargo'];
 $dependencia = $_POST['dependencia'];
 
-$check = $conexion->query("SELECT * FROM USUARIO WHERE id_usuario=$id_usuario");
+$verificar = "SELECT id_usuario FROM USUARIO WHERE correo = '$correo'";
+$resultado = mysqli_query($conexion, $verificar);
 
-if ($check->num_rows == 0) {
-    die("El usuario no existe");
+if (mysqli_num_rows($resultado) > 0) {
+    header("Location: /Proyecto_Bases/html/Cliente/registrar_cliente.html");
+    exit();
 }
 
-$sql = "
-INSERT INTO CLIENTE (id_usuario, cedula, cargo, dependencia)
-VALUES ('$id_usuario', '$cedula', '$cargo', '$dependencia')
-";
+$sql_usuario = "INSERT INTO USUARIO (nombre, apellido, correo, contrasena, estado)
+                VALUES ('$nombre', '$apellido', '$correo', '$contrasena', 'Activo')";
 
-$conexion->query($sql);
+if (mysqli_query($conexion, $sql_usuario)) {
 
-header("Location: listar_clientes.php");
-exit();
+    $id_nuevo = mysqli_insert_id($conexion);
+
+    $sql_cliente = "INSERT INTO CLIENTE (id_usuario, cedula, cargo, dependencia)
+                    VALUES ($id_nuevo, '$cedula', '$cargo', '$dependencia')";
+
+    if (mysqli_query($conexion, $sql_cliente)) {
+            header("Location: /Proyecto_Bases/html/Usuario/login.html"); 
+        exit();
+    } else {
+        header("Location: /Proyecto_Bases/html/Cliente/registrar_cliente.php?error=db_cliente");
+        exit();
+    }
+
+} else {
+    header("Location: /Proyecto_Bases/html/Cliente/registrar_cliente.php?error=db_usuario");
+    exit();
+}
 ?>

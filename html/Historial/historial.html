@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial del Equipo</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+</head>
+<body>
+    <div class="login-panel">
+        <h2>Historial del equipo</h2>
+        
+        <table class="tabla-historial">
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{FILAS_HISTORIAL}}
+            </tbody>
+        </table>
+        
+        <br>
+        <a href="/Proyecto_Bases/php/Equipo/listar_equipos.php">Volver a equipos</a>
+    </div>
+</body>
+</html>

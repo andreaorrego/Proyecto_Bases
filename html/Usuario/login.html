@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/inicio.css">
+</head>
+
+<body>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+    <div style="width: 40%; margin: 10px;">
+        <h1></h1>
+    </div>
+
+    <div class="login-panel">
+        <h2>Inicio de Sesión</h2>
+
+        <form action="/Proyecto_Bases/php/Usuario/login.php" method="POST">
+            <label>Correo</label>
+            <input type="email" name="correo" required>
+
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <div class="login-link-container">
+            <a href="/Proyecto_Bases/php/Cliente/registrar_cliente.php">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+    </div>
+
+    <script>
+        const parametros = new URLSearchParams(window.location.search);
+
+        if (parametros.has('error')) {
+            const cuadrito = document.getElementById('errorMsg');
+            cuadrito.style.display = 'block';
+
+            setTimeout(() => {
+                cuadrito.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+
+</body>
+
+</html>
