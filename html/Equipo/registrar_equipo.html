@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Agregar Equipo</title>
@@ -11,11 +12,11 @@
 
     <div class="login-panel">
         <h2>Registrar Nuevo Equipo</h2>
-        
+
         <form action="/Proyecto_Bases/php/Equipo/registrar_equipo.php" method="POST">
-            
+
             <label>Serie</label>
-            <input type="text" name="serie">
+            <input type="text" id="serie" name="serie">
 
             <label>Marca</label>
             <input type="text" name="marca">
@@ -29,13 +30,16 @@
             <label>Proveedor</label>
             <select class="select" name="id_proveedor">
                 <option value="">Seleccione un proveedor</option>
-                <option value="">2</option>
+                <option value="11">Proveedor 1</option>
+                <option value="13">Proveedor 2</option>
             </select>
 
             <button type="submit">Guardar Equipo</button>
-            <button type="button" onclick="window.location='/Proyecto_Bases/php/Equipo/listar_equipo.php'">Cancelar</button>
+            <button type="button"
+                onclick="window.location='/Proyecto_Bases/php/Equipo/listar_equipo.php'">Cancelar</button>
         </form>
     </div>
 
 </body>
+
 </html>

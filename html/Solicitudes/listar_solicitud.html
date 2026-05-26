@@ -6,10 +6,11 @@
     <title>Catalogo</title>
     <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
     <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/container.css">
 </head>
 
 <body>
-    <div class="login-panel">
+    <div class="container2">
         <h1>Solicitudes</h1>
 
         <table class="tabla-solicitudes">
@@ -28,9 +29,14 @@
                 {{FILAS_SOLICITUDES}}
             </tbody>
         </table>
-        <a href="/Proyecto_Bases/html/Usuario/menu_admin.html">
-            <button type="submit">Volver al menú</button>
-        </a>
+        <div class="botton2">
+            <a href="/Proyecto_Bases/php/Solicitudes/gestionar_solicitud.php">
+                <button type="submit">Gestionar solicitudes</button>
+            </a>
+            <a href="/Proyecto_Bases/php/Sistema/menu_admin.php">
+                <button type="submit">Volver al menú</button>
+            </a>
+        </div>
     </div>
 </body>
 

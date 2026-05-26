@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="/Proyecto_Bases/css/estilos.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/solicitudes.css">
+    <link rel="stylesheet" href="/Proyecto_Bases/css/container.css">
+</head>
+
+<body>
+
+    <h2>Gestionar solicitud</h2>
+
+    <form action="../../php/Solicitudes/actualizar_estado.php" method="POST">
+
+        <input type="hidden" name="id_solicitud" value="">
+
+        <label>Estado:</label>
+
+        <select name="estado" required>
+            <option value="">Seleccione</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobada">Aprobada</option>
+            <option value="Rechazada">Rechazada</option>
+            <option value="Entregada">Entregada</option>
+            <option value="Devuelta">Devuelta</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Actualizar estado</button>
+
+    </form>
+
+</body>

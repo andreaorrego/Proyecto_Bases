@@ -1,30 +1,20 @@
 <?php
-include("proteger_admin.php");
-include("conexion.php");
+require_once __DIR__ . '/../conexion.php';
+require_once __DIR__ . '/../Sistema/proteger_admin.php';
 
-$id = $_GET['id'];
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$solicitud = mysqli_fetch_assoc(mysqli_query($conexion,
-    "SELECT * FROM SOLICITUD_CLIENTE WHERE id_solicitud=$id"
-));
+$sql = "SELECT * FROM SOLICITUD_CLIENTE WHERE id_solicitud = $id";
+$resultado = mysqli_query($conexion, $sql);
+
+$solicitud = mysqli_fetch_assoc($resultado);
+
+if (!$solicitud) {
+    die("Solicitud no encontrada.");
+}
+
+$estado_actual = $solicitud['estado'];
+$id_solicitud = $solicitud['id_solicitud'];
+
+include(__DIR__ . "/../../html/Solicitudes/gestionar_solicitud.html");
 ?>
-
-<h2>Gestionar solicitud</h2>
-
-<form action="actualizar_estado.php" method="POST">
-
-    <input type="hidden" name="id_solicitud" value="<?= $solicitud['id_solicitud'] ?>">
-
-    <select name="estado">
-        <option <?= $solicitud['estado']=="Pendiente"?"selected":"" ?>>Pendiente</option>
-        <option <?= $solicitud['estado']=="Aprobada"?"selected":"" ?>>Aprobada</option>
-        <option <?= $solicitud['estado']=="Rechazada"?"selected":"" ?>>Rechazada</option>
-        <option <?= $solicitud['estado']=="Entregada"?"selected":"" ?>>Entregada</option>
-        <option <?= $solicitud['estado']=="Devuelta"?"selected":"" ?>>Devuelta</option>
-    </select>
-
-    <button type="submit">
-        Actualizar estado
-    </button>
-
-</form>
